@@ -13,7 +13,7 @@
     <div id="content">
         <header>
             <a id="logo_link" href="index.html">
-                <img class="logo" src="images/dps.jpeg" alt="Delta professional Services Logo">
+                <img class="logo" src="Images/DPC.jpeg" alt="Delta professional Services Logo">
             </a>
             <nav>
                 <a href="index.html">Home</a>
@@ -24,28 +24,41 @@
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <div class="numbertext">1/3</div>
-                <img src="images/design1.png">
-                </div>
-                <div class="mySlides-fade">
-                    <div class="numbertext">2/3</div>
-                    <img src="images/design2.png">
-                </div>
-                <div class="mySlides-fade">
-                    <div class="numbertext">3/3</div>
-                    <img src="images/design3.png">
-                </div>
-                <div style="text-align:center">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                <section id="Message us now">
-                    <a class="button-box" href="contactus.html">Message us now</a>
-                </section>
+                <img src="Images/design1.png">
             </div>
+            <div class="mySlides fade">
+                <div class="numbertext">2/3</div>
+                <img src="Images/design2.png">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3/3</div>
+                <img src="Images/design3.png">
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+                
         </div>
+        </br>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        </br>
+        </br>
+        </br>
+
+        <section id="message-us-now">
+            <a class="button-box" href="contactus.html">Message us now</a>
+        </section>
         <main class="delta_home">
-            <h1>Welcome to Delta Professional Service</h1>
+            <h1 style="
+                text-align: center;
+                margin-top: 5%;
+                padding: 10px;
+            ">Welcome to Delta Professional Service</h1>
             <section class="msg">
                 <p>Our mission is to deliver services that exceed the expectations of our customers. We plan to do
                     this by creating clean and healthy living and working spaces for our customers and their
@@ -57,15 +70,38 @@
                     relationship with our customers by offering exceptional customer service, high standards of
                     cleanliness, and a commitment to protecting your property.</p>
             </section>
-            <div id="Who-are-we"></div>
-            <img class="fam_lop" src="images/Thelopezfam.png" alt="The Lopez family">
+            <div id="Who-are-we">
+
+                
+            </div>
+            
+            <div class="grid-container">
+                <!-- Image column -->
+                <div>
+                    <h2 class="title_picture">Who are we</h2>
+
+                    <img  src="Images/Thelopezfam.png" alt="The Lopez family">
+                </div>
+            
+                <!-- Paragraph column -->
+                <div>
+                    <section class="msg1">
+                        <p>Meet The Lopez family from El Salvador. The Lopezs arrived in the United States at the beginning
+                            of 2013 looking for new life opportunities and security for their children. They settled in
+                            Davis County and founded a small family cleaning business in 2015. Since then, their owners and
+                            their children have overseen providing the best professional cleaning service.</p>
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- <img class="fam_lop" src="Images/Thelopezfam.png" alt="The Lopez family">
             <section class="msg1">
-                <h2>Who are we</h2>
                 <p>Meet The Lopez family from El Salvador. The Lopezs arrived in the United States at the beginning
                     of 2013 looking for new life opportunities and security for their children. They settled in
                     Davis County and founded a small family cleaning business in 2015. Since then, their owners and
                     their children have overseen providing the best professional cleaning service.</p>
-            </section>
+            </section> -->
         </main>
         <footer>
             <p>Delta Professional &copy; 2023 - Iliana Lopez</p>
@@ -85,29 +121,33 @@
             </div>
         </footer>
     </div>
+    
     <script>
-        let slideIndex = 0;
-        showAutoSlides(slideIndex);
-
-        // Next/previous controls
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
         function plusSlides(n) {
           showSlides(slideIndex += n);
         }
         
         function currentSlide(n) {
-            showAutoSlides(slideIndex = n);
+          showSlides(slideIndex = n);
         }
-
-        function showAutoSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showAutoSlides, 2000); // Change image every 2 seconds
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
         }
     </script>
 </body>
